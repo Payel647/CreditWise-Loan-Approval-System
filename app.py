@@ -3,10 +3,9 @@ import pandas as pd
 import numpy as np
 import joblib
 
-# 1. Load trained models and transformers
+# Load trained models and transformers
 @st.cache_resource
 def load_assets():
-    # Ensure these .pkl files are in the same folder as app.py
     model = joblib.load("loan_model.pkl")
     scaler = joblib.load("scaler.pkl")
     encoder = joblib.load("encoder.pkl")
@@ -20,11 +19,11 @@ except Exception as e:
 st.set_page_config(page_title="CreditWise - Loan Predictor", layout="wide")
 
 st.title("🏦 CreditWise: Loan Approval Prediction")
-st.markdown("### Powered by Machine Learning (Naive Bayes Classifier)")
+st.markdown("Machine Learning (Naive Bayes Classifier)")
 st.write("This application predicts loan eligibility based on historical data patterns including credit score, income, and debt-to-income ratio.")
 st.markdown("Enter applicant details below to predict loan eligibility.")
 
-# 2. Organize Input Fields
+# Organize Input Fields
 col1, col2, col3 = st.columns(3)
 
 with col1:
