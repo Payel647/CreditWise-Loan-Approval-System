@@ -59,7 +59,6 @@ with c3:
 
 # Prediction Execution
 if st.button("Predict", type="primary"):
-    # Build dictionary with names matching the original CSV logic
     input_dict = {
         'Applicant_Income': app_income, 
         'Coapplicant_Income': co_income, 
@@ -83,7 +82,7 @@ if st.button("Predict", type="primary"):
     
     input_df = pd.DataFrame([input_dict])
 
-    # Feature Engineering (Square transformations as per your notebook)
+    # Feature Engineering
     input_df["DTI_Ratio_sq"] = input_df["DTI_Ratio"] ** 2
     input_df["Credit_Score_sq"] = input_df["Credit_Score"] ** 2
 
@@ -92,7 +91,7 @@ if st.button("Predict", type="primary"):
     encoded_array = encoder.transform(input_df[cat_cols])
     encoded_df = pd.DataFrame(encoded_array, columns=encoder.get_feature_names_out(cat_cols))
 
-    # Combine dataframes and drop raw columns as per notebook logic
+    # Combine dataframes and drop raw columns
     X_final = pd.concat([
         input_df.drop(columns=cat_cols + ['DTI_Ratio', 'Credit_Score']), 
         encoded_df
