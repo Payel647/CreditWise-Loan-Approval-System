@@ -58,7 +58,7 @@ with c3:
     employer = st.selectbox("Employer Category", ['Private', 'Government', 'MNC', 'Business', 'Unemployed'])
 
 # Prediction Execution
-if st.button("Run Prediction", type="primary"):
+if st.button("Predict", type="primary"):
     # Build dictionary with names matching the original CSV logic
     input_dict = {
         'Applicant_Income': app_income, 
